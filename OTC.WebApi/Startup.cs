@@ -53,7 +53,12 @@ namespace OTC
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // cors
-            app.UseCors(builder => builder.AllowAnyOrigin());
+            app.UseCors(builder => 
+            {
+                builder.AllowAnyOrigin();
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+            });
 
             if (env.IsDevelopment())
             {
