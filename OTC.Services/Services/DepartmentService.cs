@@ -17,7 +17,10 @@ namespace OTC.Services.Services
         }
         public IList<Department> GetDepartments()
         {
-            return _departmentRepository.GetAll().Include(d => d.Employees).ToList();
+            return _departmentRepository.GetAll()
+                .Include(d => d.Employees)
+                .OrderBy(d => d.Name)
+                .ToList();
         }
     }
 }
